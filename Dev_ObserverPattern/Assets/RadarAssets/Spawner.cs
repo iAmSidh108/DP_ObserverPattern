@@ -13,8 +13,8 @@ public class Spawner : MonoBehaviour
     private void Start()
     {
         terrainData = terrain.terrainData;
-        InvokeRepeating("CreateEgg", 1, 1f);
-        InvokeRepeating("CreateMedKit", 1, 1f);
+        InvokeRepeating("CreateEgg", 1, 0.1f);
+        InvokeRepeating("CreateMedKit", 1, 0.1f);
     }
 
     void CreateEgg()
