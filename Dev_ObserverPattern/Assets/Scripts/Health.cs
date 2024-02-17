@@ -8,15 +8,21 @@ public class Health : MonoBehaviour
     [SerializeField] float drainPerSecond = 2f;
     float currentHealth = 0;
 
-    int lastLevel;
-
     private void Awake()
     {
         ResetHealth();
         StartCoroutine(HealthDrain());
     }
 
-    
+    private void OnEnable()
+    {
+        GetComponent<Level>().onLevelUpAction += ResetHealth;
+    }
+
+    private void OnDisable()
+    {
+        GetComponent<Level>().onLevelUpAction -= ResetHealth;
+    }
 
     public float GetHealth()
     {
@@ -28,7 +34,7 @@ public class Health : MonoBehaviour
         return fullHealth;
     }
 
-    public void ResetHealth()
+    void ResetHealth()
     {
         currentHealth = fullHealth;
         
