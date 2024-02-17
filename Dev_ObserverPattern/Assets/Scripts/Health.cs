@@ -16,21 +16,7 @@ public class Health : MonoBehaviour
         StartCoroutine(HealthDrain());
     }
 
-    private void Start()
-    {
-        lastLevel = GetComponent<Level>().GetLevel();
-    }
-
-    private void Update()
-    {
-        int currentLevel=GetComponent<Level>().GetLevel();
-
-        if (lastLevel < currentLevel)
-        {
-            lastLevel = currentLevel;
-            ResetHealth();
-        }
-    }
+    
 
     public float GetHealth()
     {
