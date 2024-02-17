@@ -12,6 +12,7 @@ public class RadarObject
 public class Radar : MonoBehaviour
 {
     public Transform playerPos;
+    
 
     float mapScale = 2.0f;
 
@@ -45,16 +46,18 @@ public class Radar : MonoBehaviour
     {
         foreach (RadarObject ro in radObjects)
         {
+
             Vector3 radarPos = (ro.owner.transform.position - playerPos.position);
             float distToObject = Vector3.Distance(playerPos.position, ro.owner.transform.position) * mapScale;
             float deltay = Mathf.Atan2(radarPos.x, radarPos.z) * Mathf.Rad2Deg - 270 - playerPos.eulerAngles.y;
             radarPos.x = distToObject * Mathf.Cos(deltay * Mathf.Deg2Rad) * -1;
-            radarPos.z = distToObject * Mathf.Sin(deltay * Mathf.Deg2Rad);
+            radarPos.z = distToObject * Mathf.Sin(deltay * Mathf.Deg2Rad); // * -1;
 
             ro.icon.transform.SetParent(this.transform);
             RectTransform rt = this.GetComponent<RectTransform>();
             Debug.Log(rt.pivot);
             ro.icon.transform.position = new Vector3(radarPos.x + rt.pivot.x, radarPos.z + rt.pivot.y, 0) + this.transform.position;
+
         }
     }
 
@@ -62,6 +65,12 @@ public class Radar : MonoBehaviour
     void Update()
     {
         DrawRadarDots();
+    }
+
+    public void ItemDropped(GameObject go)
+    {
+        Debug.Log("Item Dropped");
+        RegisterRadarObject(go, go.GetComponent<Egg>().icon);
     }
 
 }
