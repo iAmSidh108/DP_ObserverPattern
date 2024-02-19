@@ -4,6 +4,10 @@
 
 The Observer Pattern is a behavioral design pattern where an object, known as the subject, maintains a list of its dependents, known as observers, that are notified of any state changes, typically by calling one of their methods. This pattern is used to establish a one-to-many relationship between objects, allowing multiple observers to react to changes in the subject's state.
 
+![image](https://github.com/iAmSidh108/DP_SingletonPattern/assets/63715240/62694dee-153a-4534-8f1c-686a920e6401)
+
+![image](https://github.com/iAmSidh108/DP_SingletonPattern/assets/63715240/a7f91e4b-ef3e-41e9-85ff-51cc7ce168fa)
+
 ## **Examples of using the Observer Pattern in game development:**
 
 1. **Health System:**
@@ -51,3 +55,12 @@ The Observer Pattern is a behavioral design pattern where an object, known as th
    - Document the implementation to provide clarity on the observer relationships and their purposes.
 
 Implementing the Observer Pattern in Unity can enhance the flexibility and extensibility of your game systems by allowing loosely coupled components to react to changes in a decoupled manner.
+
+## How I implemented MVC pattern in Unity?
+
+In this project, The system is that when we hit play The health reduces by 2 points and experience point increases by 10 points. And every 200 experience points levels you up. And whenever we level up Health resets.
+Now the problem is how do we notify Health class to reset its value. So, in Level script we create an Event called OnLevelUp which will be invoked whenever we level up. So, in OnEnable we subscribe to the event in Health script and also unsubscribe in OnDisable with ResetHealth. This is how the health will be reset everytime levelUP event is invoked.
+
+![image](https://github.com/iAmSidh108/DP_SingletonPattern/assets/63715240/131dd6c2-952f-4b73-bb36-6ba1d2786045)
+===================================================================================================================
+![image](https://github.com/iAmSidh108/DP_SingletonPattern/assets/63715240/5667f1f8-5732-4d70-bc26-33a3f71db2d8)
